@@ -1,0 +1,39 @@
+{
+  "name": "project_structure_example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./dist/bundle.js",
+    "webpack": "webpack --mode development --config webpack.config.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danto133/project_structure_example.git"
+  },
+  "author": "danto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danto133/project_structure_example/issues"
+  },
+  "homepage": "https://github.com/danto133/project_structure_example#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "helmet": "^6.0.0",
+    "mongodb": "^4.10.0",
+    "mongoose": "^6.6.5",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.19.3",
+    "@babel/preset-env": "^7.19.4",
+    "babel-loader": "^8.2.5",
+    "nodemon": "^2.0.20",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-node-externals": "^3.0.0"
+  }
+}
