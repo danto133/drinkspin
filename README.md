@@ -1,1 +1,1 @@
-# project_structure_example
+# DRINKSPIN
