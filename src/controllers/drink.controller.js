@@ -1,4 +1,4 @@
-const TodoService = require("../services/drink.service");
+const DrinkService = require("../services/drink.service");
 const CategoryService = require('../services/category.service');
 
 const { multipleToObject } = require('../utils/mongoose');
@@ -16,31 +16,36 @@ DrinkController.index = (req, res, next) => {
       });
     })
     .catch(next);
-  // res.json({
-  //   mesage: 'adf'
-  // })
 }
 
-// TodoController.getAllTodos = async (req, res) => {
-//   try {
-//     const todos = await TodoService.getAllTodos();
-//     res.status(200).json({ 
-//       data: todos
-//     });
-//   } catch (error) {
-//     res.status(400)
-//   }
-// }
+DrinkController.show = (req, res, next) => {
+  Promise.all([
+    DrinkService.getAllDrinks()
+  ])
+    .then(([drinks]) => {
+      res.render('admin/drinks', {
+        drinks: multipleToObject(drinks),
+      });
+    })
+    .catch(next);
+}
 
-// TodoController.getDetailTodo = async (req, res) => {
-//   try {
-//     const todo = TodoService.getDetailTodo(req);
-//     res.status(200).json({ 
-//       data: todo
-//     });
-//   } catch (error) {
-    
-//   }
-// }
+DrinkController.add = async (req, res, next) => {
+  try {
+    await DrinkService.addDrink(req.body);
+    res.redirect('back');
+  } catch (error) {
+    next(error);
+  }
+}
+
+DrinkController.remove = async (req, res, next) => {
+  try {
+    await DrinkService.removeDrink(req.params);
+    res.redirect('back');
+  } catch (error) {
+    next(error);
+  }
+}
 
 module.exports = DrinkController;

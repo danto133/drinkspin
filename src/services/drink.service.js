@@ -1,12 +1,22 @@
-const TodoModel = require("../models/drink.model");
-const TodoService = {};
+const DrinkModel = require("../models/drink.model");
+const DrinkService = {};
 
-TodoService.getAllTodos = async () => {
-  return await TodoModel.find({})
+DrinkService.getAllDrinks = async () => {
+  return await DrinkModel.find({})
 }
 
-TodoService.getDetailTodo = async (req) => {
-  return await TodoModel.findOne({id: req.params.id})
+DrinkService.getDetailDrink = async (req) => {
+  return await DrinkModel.findOne({id: req.params.id})
 }
 
-module.exports = TodoService;
+DrinkService.addDrink = async (args) => {
+  const drink = DrinkModel(args);
+  await drink.save();
+}
+
+DrinkService.removeDrink = async (args) => {
+  await DrinkModel.deleteOne({ _id: args.id });
+}
+
+
+module.exports = DrinkService;

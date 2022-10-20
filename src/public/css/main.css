@@ -24,6 +24,10 @@ a {
 .app {
   overflow: hidden; }
 
+.avatar {
+  border-radius: 50%;
+  overflow: hidden; }
+
 .absolute-full {
   position: absolute;
   top: 0;

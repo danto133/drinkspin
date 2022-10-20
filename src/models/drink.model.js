@@ -6,12 +6,16 @@ const Schema = mongoose.Schema;
 const DrinkSchema = new Schema({
   name: {
     type: String,
+    unique: true,
   },
   description: {
     type: String,
   },
   thumbnail: {
     type: String,
+  },
+  price: {
+    type: Number,
   },
   slug: {
     type: String,
@@ -27,4 +31,4 @@ const DrinkModel = mongoose.model("Drinks", DrinkSchema, "drinks");
 // Add plugin
 mongoose.plugin(slug);
 
-module.exports = DrinkModel
+module.exports = DrinkModel;

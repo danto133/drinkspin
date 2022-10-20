@@ -1,6 +1,7 @@
 const CategoryModel = require('../models/category.model');
 const CategoryService = {};
 
+// Category
 CategoryService.getAllCaterories = async () => {
     return await CategoryModel.find({});
 };
@@ -11,7 +12,6 @@ CategoryService.addCategory = async (args) => {
 }
 
 CategoryService.removeCategory = async (args) => {
-    console.log('args: ', args);
     await CategoryModel.deleteOne({ _id: args.id });
 }
 
