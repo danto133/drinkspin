@@ -1,4 +1,4 @@
-const TodoModel = require("../models/todo.model");
+const TodoModel = require("../models/drink.model");
 const TodoService = {};
 
 TodoService.getAllTodos = async () => {

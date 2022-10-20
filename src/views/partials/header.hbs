@@ -1,0 +1,23 @@
+<div class="header">
+    <div class="wrapper">
+        <div class="logo">
+            <a href="/">
+                <div class="image image-107x27">
+                    <img alt="logo" src="/img/logo.png" />
+                </div>
+            </a>
+        </div>
+
+        <div class="category">
+            {{#each categories}}
+            <a href="/?category={{this.slug}}">{{this.name}}</a>
+            {{/each}}
+        </div>
+
+        <div class="cart" role="button">
+            <div class="image image-1x1">
+                <img class="" src="/img/shopping-cart.svg" />
+            </div>
+        </div>
+    </div>
+</div>

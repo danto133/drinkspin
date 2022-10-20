@@ -1,0 +1,71 @@
+<h1>Thêm Danh mục</h1>
+
+<form class="mt-5" method="post" action="/admin/categories/add">
+  <div class="form-group">
+    <label for="name">Tên danh mục</label>
+    <input type="text" class="form-control" id="name" name="name" placeholder="Enter category name">
+  </div>
+  <button type="submit" class="btn btn-primary">Tạo</button>
+</form>
+
+<table class="table mt-5">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each categories}}
+    <tr>
+      <th scope="row">{{sum @index 1}}</th>
+      <td>{{this.name}}</td>
+      <td style="text-align: right">
+        <a href="" data-toggle="modal" data-target="#remove-category" data-id="{{this._id}}">
+          <img alt="x" src="/img/x.svg" />
+        </a>
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+<div class="modal fade" id="remove-category" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Xác nhận</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-footer">
+                <button id="btn-remove" type="button" class="btn btn-danger">Xoá</button>
+                <button type="button" class="btn" data-dismiss="modal">Huỷ</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form method="post" name="form-remove" hidden></form>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    let id;
+    const formRemove = document.forms['form-remove'];
+    $('#remove-category').on('show.bs.modal', function (event) {
+        const button = $(event.relatedTarget)
+        console.log(123)
+        const recipient = button.data('id')
+        id = recipient;
+    })
+
+    const btnRemove = document.getElementById('btn-remove');
+    btnRemove.addEventListener('click', () => {
+      formRemove.action = `/admin/categories/remove/${id}?_method=DELETE`;
+      formRemove.submit();
+    })
+  })
+</script>
+
