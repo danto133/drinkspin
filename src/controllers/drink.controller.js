@@ -7,12 +7,14 @@ const DrinkController = {};
 
 DrinkController.index = (req, res, next) => {
   Promise.all([
-    CategoryService.getAllCaterories()
+    CategoryService.getAllCaterories(),
+    DrinkService.getAllDrinks(),
   ])
-    .then(([categories]) => {
+    .then(([categories, drinks]) => {
       console.log(categories);
       res.render('home', {
         categories: multipleToObject(categories),
+        drinks: multipleToObject(drinks),
       });
     })
     .catch(next);

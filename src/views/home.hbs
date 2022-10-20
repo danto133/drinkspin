@@ -17,36 +17,20 @@
         </div>
 
         <div class="col-xl-8 col-lg-7 col-md-6 col-12">
-            <div id="spin" class="spin image image-1x1">
+            <div class="draw">
+                <div id="spin" class="spin image image-1x1">
                     <img alt="circle" src="/img/circle.png" />
-                <div class="item absolute-full">
-                    <div class="absolute-full">
-                        <div class="item-1 circle">
-                            <div class="image image-1x1">
-                                <img alt="item" src="https://picsum.photos/500" />
+                    {{#each drinks}}
+                    <div class="item item-{{sum @index 1}} absolute-full">
+                        <div class="absolute-full">
+                            <div class="item-1 circle">
+                                <div class="image image-1x1">
+                                    <img alt="item" src="{{this.thumbnail}}" />
+                                </div>
                             </div>
                         </div>
                     </div>
-                    {{!-- <div class="item item-2">
-                        <div class="image image-1x1">
-                            <img alt="item" src="https://picsum.photos/500" />
-                        </div>
-                    </div>
-                    <div class="item item-3">
-                        <div class="image image-1x1">
-                            <img alt="item" src="https://picsum.photos/500" />
-                        </div>
-                    </div>
-                    <div class="item item-4">
-                        <div class="image image-1x1">
-                            <img alt="item" src="https://picsum.photos/500" />
-                        </div>
-                    </div>
-                    <div class="item item-5">
-                        <div class="image image-1x1">
-                            <img alt="item" src="https://picsum.photos/500" />
-                        </div>
-                    </div> --}}
+                    {{/each}}
                 </div>
             </div>
         </div>
@@ -56,5 +40,6 @@
 <script>
     document.addEventListener("DOMContentLoaded", () => {
         const spin = document.getElementById('spin');
+        console.log(spin);
     })
 </script>
